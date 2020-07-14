@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .clearfix:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    body {
+        background-color: #f5f5f5;
+    }
+
+    .box {
+        width: 484px;
+        height: 316px;
+        background-color: #fff;
+        margin: 30px auto;
+        border-top: 1px solid #f5f5f5;
+    }
+
+    .in-box {
+        width: 462px;
+        height: 282px;
+        margin: 17px 11px;
+        box-shadow: ;
+    }
+
+    .in-top {
+
+        height: 57px;
+        width: 100%;
+        color: #000;
+        background-color: #f5f5f5;
+
+    }
+
+    .top-left {
+        float: left;
+        height: 57px;
+        width: 50%;
+        background-color: #00b262;
+        color: #fff;
+        text-align: center;
+        line-height: 57px;
+        font-size: 18px;
+    }
+
+    .top-right {
+        float: left;
+        height: 57px;
+        width: 50%;
+        text-align: center;
+        line-height: 57px;
+        font-size: 18px;
+    }
+
+    .in-bottom {
+        height: 225px;
+        width: 100%;
+        position: relative;
+    }
+
+    .plugin {
+        width: 291px;
+        height: 87px;
+        background-repeat: no-repeat;
+        background-position: 0 center;
+        background-color: rgba(0, 0, 0, 0);
+        background-image: url(./imgs/shape.png);
+        z-index: 99;
+        position: absolute;
+        top: 90px;
+    }
+
+    .plugin-top {
+        height: 30px;
+        width: 271px;
+        display: block;
+        margin-top: 10PX;
+        margin-left: 20px;
+        line-height: 30px;
+
+    }
+
+    .plugin-ico {
+        width: 23px;
+        height: 23px;
+        float: left;
+        margin-top: 3px;
+    }
+
+    .plugin-ico img {
+        width: 23px;
+        height: 23px;
+    }
+
+    .plugin-top h1 {
+        margin-left: 8px;
+        font-size: 24px;
+        font-weight: 700;
+        float: left;
+        color: #00b262;
+    }
+
+    .plugin-bottom {
+        height: 30px;
+        width: 271px;
+        display: block;
+        margin-top: 5PX;
+        margin-left: 20px;
+        font-size: 20px;
+        color: #000;
+    }
+
+    .box-img {
+        height: 200px;
+        width: 200px;
+        margin-left: 220px;
+        overflow: hidden;
+    }
+
+    .box-img img {
+        height: 200px;
+        width: 200px;
+    }
+
+    .img2 {
+        display: none;
+    }
+</style>
+
+<body>
+
+
+    <div class="box">
+        <div class="in-box">
+            <div class="in-top clearfix">
+                <div class="top-left">今日疯抢</div>
+                <div class="top-right">量贩装</div>
+            </div>
+            <div class="in-bottom">
+                <div class="plugin">
+                    <span class="plugin-top clearfix">
+                        <div class="plugin-ico">
+                            <img src="./imgs/small-img.png" alt="">
+                        </div>
+                        <h1 id="text1">
+                            零食欢乐购
+                        </h1>
+                    </span>
+                    <span class="plugin-bottom" id="text2">
+                        爆款直降
+                    </span>
+                </div>
+                <div class="box-img">
+                    <img src="./imgs/图1.jpg" alt="" class="img1">
+                    <img src="./imgs/图2.jpg" alt="" class="img2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="./jquery1.7.js"></script>
+    <script>
+        $(function () {
+            $(".top-left").mouseover(function () {
+                $(this).css("background", "#00b262").css("color", "white");
+                $(".top-right").css("background", "#f5f5f5").css("color", "black");
+                $(".img2").hide();
+                $(".img1").show();
+                $("#text1").html("零食欢乐购");
+                $("#text2").html("爆款直降");
+            }).mouseout(function () {
+                $(this).css("background", "#f5f5f5").css("color", "black");
+            })
+            $(".top-right").mouseover(function () {
+                $(this).css("background", "#00b262").css("color", "white");
+                $(".top-left").css("background", "#f5f5f5").css("color", "black");
+                $(".img1").hide();
+                $(".img2").show();
+                $("#text1").html("爆款直降");
+                $("#text2").html("粮油调味");
+            }).mouseout(function () {
+                $(this).css("background", "#f5f5f5").css("color", "black");
+            })
+
+            var index = true;
+            var timer = setInterval(function () {
+                if (index) {
+                    $(".top-left").css("background", "#00b262").css("color", "white");
+                    $(".top-right").css("background", "#f5f5f5").css("color", "black");
+                    $(".img2").hide();
+                    $(".img1").show();
+                    $("#text1").html("零食欢乐购");
+                    $("#text2").html("爆款直降");
+                    
+                    index=false;
+                } else {
+                    $(".top-right").css("background", "#00b262").css("color", "white");
+                    $(".top-left").css("background", "#f5f5f5").css("color", "black");
+                    $(".img1").hide();
+                    $(".img2").show();
+                    $("#text1").html("爆款直降");
+                    $("#text2").html("粮油调味");
+                    index=true;
+                }
+
+            }, 1000)
+
+
+
+        })
+    </script>
+</body>
+
+</html>
